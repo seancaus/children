@@ -5,9 +5,16 @@
 #ifndef MAHJONGSERVER_SOCKET_H
 #define MAHJONGSERVER_SOCKET_H
 
+struct event_base;
 
-class socket {
+class Socket {
+public:
+    Socket();
+    ~Socket();
+    void listen(unsigned int port);
 
+protected:
+    struct event_base* _eventBase;
 };
 
 

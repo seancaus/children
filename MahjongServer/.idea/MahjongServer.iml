@@ -116,11 +116,6 @@
           <root url="file:///System/Library/Frameworks/ExternalAccessory.framework/Headers" />
           <root url="file:///System/Library/Frameworks/SpriteKit.framework/Headers" />
           <root url="file:///System/Library/Frameworks/Automator.framework/Headers" />
-          <root url="file:///System/Library/Frameworks/MetalPerformanceShaders.framework/Headers" />
-          <root url="file:///System/Library/Frameworks/MetalPerformanceShaders.framework/Frameworks/MPSImage.framework/Headers" />
-          <root url="file:///System/Library/Frameworks/MetalPerformanceShaders.framework/Frameworks/MPSCore.framework/Headers" />
-          <root url="file:///System/Library/Frameworks/MetalPerformanceShaders.framework/Frameworks/MPSNeuralNetwork.framework/Headers" />
-          <root url="file:///System/Library/Frameworks/MetalPerformanceShaders.framework/Frameworks/MPSMatrix.framework/Headers" />
           <root url="file:///System/Library/Frameworks/Vision.framework/Headers" />
           <root url="file:///System/Library/Frameworks/MediaPlayer.framework/Headers" />
           <root url="file:///System/Library/Frameworks/CoreData.framework/Headers" />
@@ -130,8 +125,8 @@
           <root url="file:///System/Library/Frameworks/SceneKit.framework/Headers" />
           <root url="file:///System/Library/Frameworks/PhotosUI.framework/Headers" />
           <root url="file:///System/Library/Frameworks/QuickLook.framework/Headers" />
-          <root url="file:///System/Library/Frameworks/Tk.framework/Headers" />
           <root url="file:///System/Library/Frameworks/Tk.framework/PrivateHeaders" />
+          <root url="file:///System/Library/Frameworks/Tk.framework/Headers" />
           <root url="file:///System/Library/Frameworks/JavaScriptCore.framework/Headers" />
           <root url="file:///System/Library/Frameworks/IMServicePlugIn.framework/Headers" />
           <root url="file:///System/Library/Frameworks/AudioUnit.framework/Headers" />
@@ -167,6 +162,7 @@
           <root url="file:///System/Library/Frameworks/Foundation.framework/Headers" />
           <root url="file:///System/Library/Frameworks/CoreLocation.framework/Headers" />
           <root url="file:///System/Library/Frameworks/DiscRecording.framework/Headers" />
+          <root url="file:///System/Library/Frameworks/ServiceManagement.framework/Headers" />
           <root url="file:///System/Library/Frameworks/PCSC.framework/Headers" />
           <root url="file:///System/Library/Frameworks/CloudKit.framework/Headers" />
           <root url="file:///System/Library/Frameworks/AppleScriptKit.framework/Headers" />
@@ -183,7 +179,11 @@
           <root url="file:///System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Headers" />
           <root url="file:///System/Library/Frameworks/CoreServices.framework/Frameworks/OSServices.framework/Headers" />
           <root url="file:///System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Headers" />
-          <root url="file:///System/Library/Frameworks/ServiceManagement.framework/Headers" />
+          <root url="file:///System/Library/Frameworks/MetalPerformanceShaders.framework/Headers" />
+          <root url="file:///System/Library/Frameworks/MetalPerformanceShaders.framework/Frameworks/MPSImage.framework/Headers" />
+          <root url="file:///System/Library/Frameworks/MetalPerformanceShaders.framework/Frameworks/MPSCore.framework/Headers" />
+          <root url="file:///System/Library/Frameworks/MetalPerformanceShaders.framework/Frameworks/MPSNeuralNetwork.framework/Headers" />
+          <root url="file:///System/Library/Frameworks/MetalPerformanceShaders.framework/Frameworks/MPSMatrix.framework/Headers" />
           <root url="file:///System/Library/Frameworks/ICADevices.framework/Headers" />
           <root url="file:///System/Library/Frameworks/Scripting.framework/Headers" />
           <root url="file:///System/Library/Frameworks/Accelerate.framework/Headers" />
@@ -302,11 +302,6 @@
           <root url="file:///System/Library/Frameworks/ExternalAccessory.framework/Headers" />
           <root url="file:///System/Library/Frameworks/SpriteKit.framework/Headers" />
           <root url="file:///System/Library/Frameworks/Automator.framework/Headers" />
-          <root url="file:///System/Library/Frameworks/MetalPerformanceShaders.framework/Headers" />
-          <root url="file:///System/Library/Frameworks/MetalPerformanceShaders.framework/Frameworks/MPSImage.framework/Headers" />
-          <root url="file:///System/Library/Frameworks/MetalPerformanceShaders.framework/Frameworks/MPSCore.framework/Headers" />
-          <root url="file:///System/Library/Frameworks/MetalPerformanceShaders.framework/Frameworks/MPSNeuralNetwork.framework/Headers" />
-          <root url="file:///System/Library/Frameworks/MetalPerformanceShaders.framework/Frameworks/MPSMatrix.framework/Headers" />
           <root url="file:///System/Library/Frameworks/Vision.framework/Headers" />
           <root url="file:///System/Library/Frameworks/MediaPlayer.framework/Headers" />
           <root url="file:///System/Library/Frameworks/CoreData.framework/Headers" />
@@ -316,8 +311,8 @@
           <root url="file:///System/Library/Frameworks/SceneKit.framework/Headers" />
           <root url="file:///System/Library/Frameworks/PhotosUI.framework/Headers" />
           <root url="file:///System/Library/Frameworks/QuickLook.framework/Headers" />
-          <root url="file:///System/Library/Frameworks/Tk.framework/Headers" />
           <root url="file:///System/Library/Frameworks/Tk.framework/PrivateHeaders" />
+          <root url="file:///System/Library/Frameworks/Tk.framework/Headers" />
           <root url="file:///System/Library/Frameworks/JavaScriptCore.framework/Headers" />
           <root url="file:///System/Library/Frameworks/IMServicePlugIn.framework/Headers" />
           <root url="file:///System/Library/Frameworks/AudioUnit.framework/Headers" />
@@ -353,6 +348,7 @@
           <root url="file:///System/Library/Frameworks/Foundation.framework/Headers" />
           <root url="file:///System/Library/Frameworks/CoreLocation.framework/Headers" />
           <root url="file:///System/Library/Frameworks/DiscRecording.framework/Headers" />
+          <root url="file:///System/Library/Frameworks/ServiceManagement.framework/Headers" />
           <root url="file:///System/Library/Frameworks/PCSC.framework/Headers" />
           <root url="file:///System/Library/Frameworks/CloudKit.framework/Headers" />
           <root url="file:///System/Library/Frameworks/AppleScriptKit.framework/Headers" />
@@ -369,7 +365,11 @@
           <root url="file:///System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Headers" />
           <root url="file:///System/Library/Frameworks/CoreServices.framework/Frameworks/OSServices.framework/Headers" />
           <root url="file:///System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Headers" />
-          <root url="file:///System/Library/Frameworks/ServiceManagement.framework/Headers" />
+          <root url="file:///System/Library/Frameworks/MetalPerformanceShaders.framework/Headers" />
+          <root url="file:///System/Library/Frameworks/MetalPerformanceShaders.framework/Frameworks/MPSImage.framework/Headers" />
+          <root url="file:///System/Library/Frameworks/MetalPerformanceShaders.framework/Frameworks/MPSCore.framework/Headers" />
+          <root url="file:///System/Library/Frameworks/MetalPerformanceShaders.framework/Frameworks/MPSNeuralNetwork.framework/Headers" />
+          <root url="file:///System/Library/Frameworks/MetalPerformanceShaders.framework/Frameworks/MPSMatrix.framework/Headers" />
           <root url="file:///System/Library/Frameworks/ICADevices.framework/Headers" />
           <root url="file:///System/Library/Frameworks/Scripting.framework/Headers" />
           <root url="file:///System/Library/Frameworks/Accelerate.framework/Headers" />

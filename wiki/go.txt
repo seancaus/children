@@ -1,0 +1,4 @@
+brew install go-delve/delve/delve
+export GOPATH=/usr/local/Cellar/go/1.9.2/libexec
+export PATH=$PATH:GOPATH/bin
+
