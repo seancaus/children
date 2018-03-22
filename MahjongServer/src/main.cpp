@@ -1,18 +1,13 @@
 #include <iostream>
-#include <thread>
-#include "socket.h"
+
+#include <memory>
+#include "ConnectListener.h"
 
 using namespace std;
 
 int main() {
 
-    thread t([](){
-        cout << "11111" << endl;
-    });
-//    t.join();
-
-    Socket socket;
-    socket.listen(9999);
-    cout << "Hello, World!" << endl;
+    auto listener = make_shared<ConnectListener>();
+    listener->listen(9999);
     return 0;
 }

@@ -10,7 +10,7 @@ include_directories(${PROJECT_SOURCE_DIR}/include)
 link_directories(${PROJECT_SOURCE_DIR}/Dependencies/lib)
 
 #add_subdirectory(lib/Libevent)
-file(GLOB_RECURSE SOURCE_FILES src/*.cpp include/*.h)
+file(GLOB_RECURSE SOURCE_FILES include/*.h src/*.cpp)
 
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})
 
