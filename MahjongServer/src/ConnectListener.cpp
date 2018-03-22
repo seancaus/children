@@ -34,13 +34,12 @@ void ConnectListener::listen(unsigned int port)
 
     _eventBase = event_base_new();
 //    evconnlistener_cb cb = (evconnlistener_cb)std::bind(&ConnectListener::connectcb,this);
-    _evconnlistener = evconnlistener_new_bind(_eventBase, [](struct evconnlistener *listener, evutil_socket_t fd, struct sockaddr *addr, int len,
-                                                                 void *ptr){
+    _evconnlistener = evconnlistener_new_bind(_eventBase, [](struct evconnlistener *listener, evutil_socket_t fd, struct sockaddr *addr, int len, void *ptr){
         auto fdlistenerManager = (FiledescListenerManager*)ptr;
         fdlistenerManager->dispatchfd(fd);
     }, (void*)_fdListenerManager.get(), LEV_OPT_REUSEABLE, -1, (struct sockaddr*)&sin, sizeof(sin));
     evconnlistener_set_error_cb(_evconnlistener, [](struct evconnlistener *, void *){
-
+        cout << "evconnlistener_error" << endl;
     });
     _listener = make_shared<thread>(&ConnectListener::loop, this);
     _listener->join();

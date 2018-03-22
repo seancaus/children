@@ -25,8 +25,17 @@ void FiledescListener::listen() {
 void FiledescListener::pushfd(int fd)
 {
     cout << "fd:" << fd << endl;
-    auto ev = event_new(_eventBase,fd,EV_READ|EV_PERSIST,[](int fd,short what,void*ptr){
-        cout << "read" << endl;
-    }, (char*)"EventRead");
-    event_add(ev, nullptr);
+    auto ev = bufferevent_socket_new(_eventBase,fd,0);
+    bufferevent_setcb(ev,[](struct bufferevent *bev, void *ctx){
+
+        size_t n = 0;
+        char data[8192];
+        while((n = bufferevent_read(bev,data, sizeof(data))) > 0){
+            cout << data << endl;
+            bufferevent_write(bev,data,n);
+        };
+        cout << "end" << endl;
+    }, nullptr, nullptr, nullptr);
+    cout << "ev:" << ev << endl;
+    bufferevent_enable(ev,EV_READ);
 }
