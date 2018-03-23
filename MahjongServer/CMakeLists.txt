@@ -7,11 +7,11 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 include_directories(${PROJECT_SOURCE_DIR}/Dependencies/include)
 include_directories(${PROJECT_SOURCE_DIR}/include)
 
-link_directories(${PROJECT_SOURCE_DIR}/Dependencies/lib)
+link_directories(${PROJECT_SOURCE_DIR}/Dependencies/lib/Debug)
 
 #add_subdirectory(lib/Libevent)
 file(GLOB_RECURSE SOURCE_FILES include/*.h src/*.cpp)
 
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})
 
-target_link_libraries( ${PROJECT_NAME} event)
+target_link_libraries( ${PROJECT_NAME} uv)
