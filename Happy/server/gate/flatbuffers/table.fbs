@@ -1,0 +1,45 @@
+// 桌子协议
+
+namespace ziv.hall.table;
+
+// 坐下
+table SetdownRequest
+{
+    playerId:string;
+}
+
+table SetdownReply
+{
+    code:int;
+    tableId:string;//桌号
+    seat:int;       //座位号
+}
+
+table LeaveRequest
+{
+    tableId:string;
+}
+
+table LeaveReply
+{
+    code:int;
+}
+
+union Any
+{
+    SetdownRequest,
+    SetdownReply,
+    LeaveRequest,
+    LeaveReply
+}
+
+table Message
+{
+    id:int;
+    object:Any;
+}
+
+root_type Message;
+
+file_identifier "tabl";
+file_extension "mon";
