@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(MahjongServer)
+project(gate)
 
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/build/${CMAKE_BUILD_TYPE})    #动态库
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/build/${CMAKE_BUILD_TYPE})    #静态库
