@@ -1,0 +1,38 @@
+// 桌子协议
+
+namespace ziv.gate;
+
+// 
+table LoginRequest
+{
+    playerId:string;
+}
+
+table LoginReply
+{
+    playerId:string;
+}
+
+//心跳
+table Heartbeat
+{
+    playerId:string;
+}
+
+union Any
+{
+    LoginRequest,
+    LoginReply,
+    Heartbeat
+}
+
+table Message
+{
+    id:int;
+    object:Any;
+}
+
+root_type Message;
+
+//file_identifier "tabl";
+file_extension "mon";

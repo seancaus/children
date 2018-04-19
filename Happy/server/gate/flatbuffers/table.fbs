@@ -41,5 +41,5 @@ table Message
 
 root_type Message;
 
-file_identifier "tabl";
+//file_identifier "tabl";
 file_extension "mon";
