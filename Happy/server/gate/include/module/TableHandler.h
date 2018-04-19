@@ -10,7 +10,7 @@
 
 using namespace std;
 
-class TableManager;
+class GameManager;
 
 class TableHandler : public MessageHandler {
 
@@ -23,7 +23,7 @@ public:
 
 protected:
 
-    shared_ptr<TableManager> _tableManager;
+    shared_ptr<GameManager> _tableManager;
 
 };
 

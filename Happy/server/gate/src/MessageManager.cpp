@@ -18,7 +18,7 @@ MessageManager::~MessageManager() {
 }
 
 void MessageManager::registerListener(unsigned int packId, shared_ptr <MessageHandler> service) {
-    _listeners.insert(make_pair(packId,service));
+    _listeners.insert(make_pair(packId, service));
 }
 
 void MessageManager::dispatchMessage(unsigned int packId, string &msg) {

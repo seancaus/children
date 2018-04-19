@@ -3,16 +3,16 @@
 //
 
 #include <iostream>
-#include "services/TableHandler.h"
+#include "module/TableHandler.h"
 
-#include "services/TableManager.h"
-#include "services/table_generated.h"
+#include "module/game/GameManager.h"
+#include "module/table_generated.h"
 
 using namespace std;
 using namespace ziv::hall::table;
 
 TableHandler::TableHandler() {
-    _tableManager = make_shared<TableManager>();
+    _tableManager = make_shared<GameManager>();
 }
 
 TableHandler::~TableHandler()
