@@ -10,7 +10,7 @@
 
 using namespace std;
 
-class MessageHandler;
+class ModuleListener;
 
 class MessageManager {
 
@@ -19,12 +19,12 @@ public:
     MessageManager();
     virtual ~MessageManager();
 
-    void registerListener(unsigned int packId, shared_ptr<MessageHandler> service);
-    void dispatchMessage(unsigned int packId, string &msg);
+    void registerHandler(unsigned int msgId, shared_ptr<ModuleListener>);
+    void dispatchMessage(unsigned int msgId, std::string &uid, string &msg);
 
 protected:
 
-    map<int,shared_ptr<MessageHandler>> _listeners;
+    map<int,shared_ptr<ModuleListener>> _handlers;
 
 };
 

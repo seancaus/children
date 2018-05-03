@@ -20,15 +20,15 @@ public:
     MessageManager();
     virtual ~MessageManager();
 
-    void registerListener(unsigned int packId, shared_ptr<MessageHandler> service);
+    void registerListener(unsigned int msgId, shared_ptr<MessageHandler> service);
     void dispatchMessage();
 
-    void pushMessage(unsigned int packId, string &msg);
+    void pushMessage(unsigned int msgId, string &msg);
+    void clearMessage();
 
 protected:
 
-    vector<pair<unsigned int,string>> _messages;
-
+    vector<pair<unsigned int,string>>   _messages;
     map<int,shared_ptr<MessageHandler>> _listeners;
 
 };

@@ -17,14 +17,20 @@ MessageManager::~MessageManager() {
 
 }
 
-void MessageManager::registerListener(unsigned int packId, shared_ptr <MessageHandler> service) {
-    _listeners.insert(make_pair(packId,service));
+void MessageManager::registerListener(unsigned int msgId, shared_ptr <MessageHandler> service) {
+    _listeners.insert(make_pair(msgId,service));
 }
 
-void MessageManager::pushMessage(unsigned int packId, string &msg) {
-    _messages.push_back(make_pair(packId,msg));
+void MessageManager::pushMessage(unsigned int msgId, string &msg) {
+    _messages.push_back(make_pair(msgId,msg));
+
+    this->dispatchMessage();
 }
 
+void MessageManager::clearMessage()
+{
+    _messages.clear();
+}
 
 void MessageManager::dispatchMessage() {
     while( !_messages.empty() ){
@@ -32,7 +38,7 @@ void MessageManager::dispatchMessage() {
 
         auto listener = _listeners.find(pair->first);
         if(listener == _listeners.end()){
-            cout << "can't find the listener for packid:" << pair->first << endl;
+            cout << "can't find the listener for msgId:" << pair->first << endl;
             continue;
         }
 

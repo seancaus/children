@@ -1,34 +1,35 @@
-// 桌子协议
+// 大厅
 
-namespace ziv.hall;
+namespace share.hall;
 
-// 
+table User
+{
+    ca:string;          //登录凭证
+    uid:string;
+    nickName:string;
+}
+
+//----------------------------------------
+
+// 登录
 table LoginRequest
 {
-    playerId:string;
+    ca:string;//登录凭证
 }
 
 table LoginReply
 {
-    playerId:string;
-}
-
-//心跳
-table Heartbeat
-{
-    playerId:string;
+    player:User;
 }
 
 union Any
 {
     LoginRequest,
-    LoginReply,
-    Heartbeat
+    LoginReply
 }
 
 table Message
 {
-    id:int;
     object:Any;
 }
 

@@ -3,89 +3,151 @@
 //
 
 #include <iostream>
+#include <fstream>
 #include <uvw.hpp>
 
 #include "Server.h"
 #include "Packet.h"
-#include "MessageManager.h"
+#include "utils/uuid.h"
 
 using namespace uvw;
 using namespace std;
 
 Server::Server()
-        : _loop(nullptr) {
+        : _loop(nullptr)
+        , _receiveHandler(nullptr)
+{
     _packer = make_unique<Packet>();
-    _msgManager = make_shared<MessageManager>();
 }
 
-Server::~Server() {
-//    _loop->stop();
-//    _loop->close();
+Server::~Server()
+{
+    _loop->stop();
+    _loop->close();
 }
 
-void Server::start() {
+//-------------------------------------------------------------------------------------
+void Server::start(string ip, unsigned int port)
+{
     if (_loop) _loop->close();
 
     _loop = Loop::getDefault();
 
     auto server = _loop->resource<TcpHandle>();
-    server->on<uvw::ErrorEvent>(std::bind(&Server::onError,this,placeholders::_1, placeholders::_2));
-    server->on<ListenEvent>(std::bind(&Server::onConnect, this, placeholders::_1, placeholders::_2));
-    server->bind("127.0.0.1", 9999);
+    server->on<ErrorEvent>(bind(&Server::onError,this,placeholders::_1, placeholders::_2));
+    server->on<ListenEvent>(bind(&Server::onConnect, this, placeholders::_1, placeholders::_2));
+    server->bind(ip, port);
     server->listen();
 
     _loop->run();
 }
 
-void Server::send(uvw::TcpHandle &client, int packId, std::string &data) {
-    string msg;
-    _packer->pack(packId, data, msg);
-    client.write(const_cast<char*>(msg.data()), msg.length());
-}
-
-void Server::onConnect(const ListenEvent &event, TcpHandle &handle) {
+void Server::onConnect(const ListenEvent &event, TcpHandle &handle)
+{
     string data("");
-    typedef std::function<void(const DataEvent &, TcpHandle &)> DataEventCallback;
-    DataEventCallback dataEventCallback = std::bind(&Server::onRecv, this, placeholders::_1, placeholders::_2, data);
+    typedef function<void(const DataEvent &, TcpHandle &)> DataEventCallback;
+    DataEventCallback dataEventCallback = bind(&Server::onRecv, this, placeholders::_1, placeholders::_2, data);
 
-    shared_ptr<TcpHandle> client = handle.loop().resource<TcpHandle>();
+    auto uuid = uuid::genUUID();
+    auto client = handle.loop().resource<TcpHandle>();
+    client->data(make_shared<string>(uuid));
     client->on<DataEvent>(dataEventCallback);
-    client->on<ShutdownEvent>(std::bind(&Server::onShutdown,this,placeholders::_1, placeholders::_2));
-    client->on<CloseEvent>(std::bind(&Server::onClose,this,placeholders::_1, placeholders::_2));
+    client->on<ShutdownEvent>(bind(&Server::onShutdown,this,placeholders::_1, placeholders::_2));
+    client->on<CloseEvent>(bind(&Server::onClose,this,placeholders::_1, placeholders::_2));
 
     handle.accept(*client);
+
+    _tempClients.insert(make_pair(uuid, client));
+
     auto req = _loop->resource<WorkReq>([&client, &handle]() {
         client->read();
     });
     req->queue();
 }
 
-void Server::onRecv(const DataEvent &event, TcpHandle &handle, string &data) {
+void Server::onRecv(const DataEvent &event, TcpHandle &client, string &data)
+{
     data.append(event.data.get(), event.length);
 
-    unsigned int packid;
     string msg;
-    if( 0 == (packid = _packer->unpack(data, msg)) )return;
+    size_t msgId;
+    if( -1 == (msgId = _packer->unpack(data, msg)) )return;
 
-    _msgManager->dispatchMessage(packid, msg);
+    if( !_receiveHandler ){
+        cout << "_receiveHandler is nullptr" << endl;
+        return;
+    }
 
-    send(handle,1,msg);
+    ofstream of("s.txt",std::ios::binary);
+    of.write((msg).c_str(),(msg).length());
+    shared_ptr<string> uuid = client.data<string>();
+    _receiveHandler(msgId, *uuid.get(), msg);
 }
 
-void Server::onShutdown(const ShutdownEvent &event, uvw::TcpHandle &client) {
+//-------------------------------------------------------------------------------------
+void Server::authClient(std::string &uuid, std::string &uid)
+{
+    auto authIter = _authClients.find(uid);
+    if(authIter != _authClients.end())
+    {
+        _authClients.erase(authIter);
+        authIter->second->shutdown();
+    }
+
+    auto iter = _tempClients.find(uuid);
+    if(iter == _tempClients.end())
+    {
+        cout << "don't have client form uuid: " << uuid << endl;
+        return;
+    }
+
+    _tempClients.erase(iter);
+
+    auto client = iter->second;
+    client->data(make_shared<string>(uid));
+    _authClients.insert(make_pair(uid, client));
+}
+
+//-------------------------------------------------------------------------------------
+void Server::send(std::string &uuid,unsigned int msgId, std::string &data)
+{
+    assert(msgId > 0);
+
+    if(_authClients.end() == _authClients.find(uuid)){
+        cout << "don't have uuid: " << uuid << endl;
+        return;
+    }
+    auto client = _authClients[uuid];
+    send(client, msgId, data);
+}
+
+void Server::send(shared_ptr<TcpHandle> client, unsigned int msgId, string &data)
+{
+    string msg;
+    _packer->pack(msgId, data, msg);
+    client->write(const_cast<char*>(msg.data()), msg.length());
+}
+//-------------------------------------------------------------------------------------
+
+void Server::onShutdown(const ShutdownEvent &event, TcpHandle &client)
+{
     cout << "on Shutdown" <<  &client << endl;
 //    client.close();
 }
 
-void Server::onClose(const CloseEvent &event, TcpHandle &client) {
+void Server::onClose(const CloseEvent &event, TcpHandle &client)
+{
 //    [ptr = handle.shared_from_this()](const CloseEvent &, TcpHandle &) { ptr->close(); }
     cout << "on client close" << endl;
 }
 
-void Server::onError(const uvw::ErrorEvent &event, uvw::TcpHandle &handle) {
+void Server::onError(const ErrorEvent &event, TcpHandle &handle)
+{
     cout << event.name()<<":"<< event.what() << endl;
 }
+//-------------------------------------------------------------------------------------
 
-const shared_ptr<MessageManager>& Server::getServiceManager() const {
-    return _msgManager;
+void Server::set_handler(const ReceiveHandler &_handler)
+{
+    _receiveHandler = _handler;
 }

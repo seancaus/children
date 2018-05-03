@@ -5,12 +5,6 @@
 #ifndef NETWORK_NETWORK_H
 #define NETWORK_NETWORK_H
 
-#include <string>
-
-using namespace std;
-
-void login(const char* playerName);
-void setdown();
-
+void login(const char* ca);
 
 #endif //NETWORK_NETWORK_H

@@ -10,13 +10,8 @@
 class Packet {
 
 public:
-    Packet();
-    virtual ~Packet();
-
-    virtual void pack(unsigned int packId, std::string &data, std::string &msg);
-    virtual unsigned int unpack(std::string &data, std::string &msg);
-
-
+    virtual void pack(unsigned int typeId, std::string &data, std::string &out);
+    virtual unsigned int unpack(std::string &data, std::string &out);
 };
 
 

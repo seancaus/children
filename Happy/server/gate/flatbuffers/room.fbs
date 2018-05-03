@@ -1,18 +1,16 @@
 // 桌子协议
 
-namespace ziv.hall.table;
+namespace share.common.room;
 
-// 坐下
-table SetdownRequest
+table JoinRequest
 {
-    playerId:string;
+    tableId:string;
+    seat:int;
 }
 
-table SetdownReply
+table JoinReply
 {
-    code:int;
-    tableId:string;//桌号
-    seat:int;       //座位号
+    code:int = 0;
 }
 
 table LeaveRequest
@@ -24,11 +22,12 @@ table LeaveReply
 {
     code:int;
 }
+//------------------------------------------
 
 union Any
 {
-    SetdownRequest,
-    SetdownReply,
+    JoinRequest,
+    JoinReply,
     LeaveRequest,
     LeaveReply
 }

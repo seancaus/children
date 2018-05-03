@@ -1,25 +1,32 @@
 #include <iostream>
 #include <thread>
-#include <handler/TableHandler.h>
-#include "Connector.h"
+#include <ConnectManager.h>
+#include "TCPConnector.h"
 
 #include "MessageManager.h"
-#include "table_generated.h"
+#include "flatbuffers/minireflect.h"
+#include "module/hall_generated.h"
 
 using namespace std;
-using namespace ziv::hall::table;
+using namespace share::hall;
+using namespace flatbuffers;
 
 int main() {
 
-    std::string ip("127.0.0.1");
+    auto root = make_shared<ConnectManager>();
+    root->connect("127.0.0.1", 9999);
 
-    Connector conn;
-    conn.connect(ip,9999);
-    conn.getMsgManager()->registerListener(1,make_shared<TableHandler>());
+    flatbuffers::FlatBufferBuilder builder;
+    auto ca = builder.CreateString("1");
+    LoginRequestBuilder requestBuilder(builder);
+    requestBuilder.add_ca(ca);
+    auto request = CreateMessage(builder,Any_LoginRequest,requestBuilder.Finish().Union());
+    builder.Finish(request);
+    string str(reinterpret_cast<const char*>(builder.GetBufferPointer()),builder.GetSize());
+    root->send(2, str);
 
+    root->start(true);
 
-    thread con([&conn](){conn.loop();});
-    con.join();
     cout << "main end" << endl;
 
     return 0;

@@ -1,30 +1,28 @@
 //
 // Created by Ziv on 2018/4/3.
 //
-#include <Connector.h>
+#include "ConnectManager.h"
+#include "flatbuffers/flatbuffers.h"
+#include "module/hall_generated.h"
 #include "network.h"
 
-#include "table_generated.h"
-#include "flatbuffers/minireflect.h"
+using namespace std;
+using namespace share::hall;
+using namespace flatbuffers;
 
-using namespace ziv::hall::table;
+static shared_ptr<ConnectManager> _root;
 
-static Connector connect;
-
-void login(const char* playerName)
+void login(const char* ca)
 {
-    std::string ip("127.0.0.1");
-    connect.connect(ip, 9999);
+    _root = make_shared<ConnectManager>();
+    _root->connect();
 
-}
-
-void setdown() {
-    flatbuffers::FlatBufferBuilder builder(1024);
-    auto request = CreateSetdownRequest(builder,builder.CreateString("test001"));
-    auto msg = CreateMessage(builder, Any_SetdownRequest, request.Union());
-    builder.Finish(msg);
-
+    flatbuffers::FlatBufferBuilder builder;
+    LoginRequestBuilder requestBuilder(builder);
+    requestBuilder.add_ca(builder.CreateString(ca));
+    auto request = CreateMessage(builder,Any_LoginRequest,requestBuilder.Finish().Union());
+    builder.Finish(request);
     string str(reinterpret_cast<const char*>(builder.GetBufferPointer()),builder.GetSize());
-    connect.send(1,str);
-}
 
+    _root->send(2, str);
+}

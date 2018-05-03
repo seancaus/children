@@ -5,7 +5,7 @@
 #include <iostream>
 
 #include <MessageManager.h>
-#include "MessageHandler.h"
+#include "ModuleListener.h"
 
 using namespace std;
 
@@ -17,17 +17,17 @@ MessageManager::~MessageManager() {
 
 }
 
-void MessageManager::registerListener(unsigned int packId, shared_ptr <MessageHandler> service) {
-    _listeners.insert(make_pair(packId, service));
+void MessageManager::registerHandler(unsigned int msgId, shared_ptr <ModuleListener> handler) {
+    _handlers.insert(make_pair(msgId, handler));
 }
 
-void MessageManager::dispatchMessage(unsigned int packId, string &msg) {
-    auto listener = _listeners.find(packId);
-    if(listener == _listeners.end()){
-        cout << "can't find the listener for packid:" << packId << endl;
+void MessageManager::dispatchMessage(unsigned int msgId, string &uid, string &msg) {
+    auto listener = _handlers.find(msgId);
+    if(listener == _handlers.end()){
+        cout << "can't find the listener for msgId:" << msgId << endl;
         return;
     }
 
-    listener->second->handleMessage(msg);
+    listener->second->handleMessage(uid,msg);
 }
 

@@ -7,12 +7,10 @@
 
 #include <string>
 
-using namespace std;
-
-class MessageHandler {
+class ModuleListener {
 
 public:
-    virtual void handleMessage(string& msg) = 0;
+    virtual void handleMessage(std::string& uid, std::string& msg) = 0;
 };
 
 

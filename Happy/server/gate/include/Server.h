@@ -7,8 +7,8 @@
 
 #include <map>
 #include <memory>
-
-using namespace std;
+#include <string>
+#include <functional>
 
 namespace uvw{
     class Loop;
@@ -22,31 +22,38 @@ namespace uvw{
 }
 
 class Packet;
-class MessageManager;
+
+typedef std::function<void(unsigned int, std::string& uuid, std::string&)> ReceiveHandler;
 
 class Server {
+
 public:
     Server();
     virtual ~Server();
 
-    void start();
-    void send(uvw::TcpHandle &handle, int packId, std::string &data);
-
+    void start(std::string ip = "127.0.0.1", unsigned int port = 9999);
     void onConnect(const uvw::ListenEvent &, uvw::TcpHandle &handle);
-    void onRecv(const uvw::DataEvent &event, uvw::TcpHandle &handle,string &data);
+    void onRecv(const uvw::DataEvent &event, uvw::TcpHandle &handle,std::string &data);
+
+    void authClient(std::string &uuid,std::string &uid);
+
+    void send(std::string &uid, unsigned int msgId, std::string &data);
+    void send(std::shared_ptr<uvw::TcpHandle> handle, unsigned int msgId, std::string &data);
+
     void onError(const uvw::ErrorEvent &, uvw::TcpHandle &);
     void onShutdown(const uvw::ShutdownEvent &, uvw::TcpHandle &client);
     void onClose(const uvw::CloseEvent &event, uvw::TcpHandle &handle);
 
-
-    const shared_ptr<MessageManager> &getServiceManager() const;
+    void set_handler(const ReceiveHandler &_handler);
 
 protected:
 
-    shared_ptr<uvw::Loop>   _loop;
-    unique_ptr<Packet>      _packer;
+    std::shared_ptr<uvw::Loop>   _loop;
+    std::unique_ptr<Packet>      _packer;
+    ReceiveHandler          _receiveHandler;
 
-    shared_ptr<MessageManager> _msgManager;
+    std::map<std::string, std::shared_ptr<uvw::TcpHandle>> _tempClients;
+    std::map<std::string, std::shared_ptr<uvw::TcpHandle>> _authClients;
 };
 
 

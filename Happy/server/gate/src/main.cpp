@@ -1,16 +1,17 @@
 //
 // Created by Ziv on 2018/3/26.
 //
-#include <module/TableHandler.h>
-#include "Server.h"
-#include "MessageManager.h"
+#include <memory>
+#include <iostream>
+#include "Root.h"
+#include "uuid.h"
+
+using namespace std;
 
 int main() {
-    Server server;
 
-    auto service = make_shared<TableHandler>();
-    server.getServiceManager()->registerListener(1, service);
+    auto root = make_shared<Root>();
+    root->start();
 
-    server.start();
     return 0;
 }

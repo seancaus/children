@@ -15,4 +15,4 @@ file(GLOB_RECURSE SOURCE_FILES include/*.h src/*.cpp)
 
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})
 
-target_link_libraries( ${PROJECT_NAME} uv flatbuffers)
+target_link_libraries( ${PROJECT_NAME} uv flatbuffers uuid)

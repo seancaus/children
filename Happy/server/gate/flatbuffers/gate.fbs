@@ -1,29 +1,30 @@
 // 桌子协议
 
-namespace ziv.gate;
+namespace share.gate;
 
-// 
+// 登录
 table LoginRequest
 {
-    playerId:string;
+    token:string;
 }
 
 table LoginReply
 {
-    playerId:string;
+    token:string;
+    nickName:string;
 }
 
-//心跳
-table Heartbeat
+/**
+table HeartbeatRequest
 {
-    playerId:string;
+
 }
+*/
 
 union Any
 {
     LoginRequest,
-    LoginReply,
-    Heartbeat
+    LoginReply
 }
 
 table Message
