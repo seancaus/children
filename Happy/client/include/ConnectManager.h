@@ -7,10 +7,9 @@
 
 #include <map>
 #include "Singleton.h"
-#include "IConnector.h"
-
 
 class MessageManager;
+class IConnector;
 
 class ConnectManager : public Singleton<ConnectManager>
 {
@@ -18,6 +17,11 @@ class ConnectManager : public Singleton<ConnectManager>
 public:
 
     ConnectManager();
+
+    int createConnect(std::string ip = "127.0.0.1", unsigned int port = 9999);
+    void closeConnect(int connectId);
+    void send(int connectId,std::string& msg);
+
 
     void connect(std::string ip = "127.0.0.1", unsigned int port = 9999);
     void onRecv(unsigned int msgId, std::string &msg);

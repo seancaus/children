@@ -36,10 +36,12 @@ void Root::onRecv(unsigned int msgId, std::string& uuid, std::string &msg)
     _msgManager->dispatchMessage(msgId, uuid, msg);
 }
 
-void Root::send(std::string& uid, int msgId, std::string &msg) {
+void Root::send(std::string& uid, int msgId, std::string &msg)
+{
     _server->send(uid,msgId,msg);
 }
 
-void Root::authPlayer(std::string &uid, std::string &uuid) {
+void Root::authPlayer(std::string &uid, std::string &uuid)
+{
     _server->authClient(uuid, uid);
 }

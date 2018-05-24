@@ -4,7 +4,7 @@
 
 #include <string>
 #include <iostream>
-#include "uuid/uuid.h"
+#include "uuid.h"
 #include "utils/uuid.h"
 
 using namespace std;

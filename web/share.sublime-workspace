@@ -1,0 +1,267 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"if",
+				"ifmain\tif __name__ == '__main__'"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "Bridge/app/views/layouts/application.html.erb",
+			"settings":
+			{
+				"buffer_size": 474,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 119.0,
+		"last_filter": "install",
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 461.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/huxf/Documents/Workspace/ClionProjects/children/web",
+		"/Users/huxf/Documents/Workspace/ClionProjects/children/web/Bridge",
+		"/Users/huxf/Documents/Workspace/ClionProjects/children/web/Bridge/app"
+	],
+	"file_history":
+	[
+		"/Users/huxf/Documents/Workspace/Sublime/Bridge/config/routes.rb",
+		"/Users/huxf/Documents/Workspace/Sublime/Bridge/app/views/welcome/index.html.erb",
+		"/Users/huxf/Documents/Workspace/Sublime/Bridge/app/mailers/application_mailer.rb",
+		"/Users/huxf/Documents/Workspace/Sublime/packer/www.py",
+		"/Users/huxf/Library/Caches/CLion2016.1/cmake/generated/client-b8d84105/b8d84105/Debug/c.txt",
+		"/Users/huxf/Downloads/Snaker/Assets/SGF/Math/SGFRandom.cs",
+		"/Users/huxf/Downloads/Snaker/Assets/Snaker/AppMain.cs",
+		"/Users/huxf/Downloads/Snaker/Assets/SGF/UI/Framework/UIRoot.cs",
+		"/Users/huxf/Downloads/Snaker/Assets/SGF/UI/Framework/UIManager.cs",
+		"/Users/huxf/Downloads/Snaker/Assets/SGF/Module/Framework/Module.cs",
+		"/Users/huxf/Downloads/Snaker/Assets/SGF/UI/Framework/UIPanel.cs",
+		"/Users/huxf/Downloads/Snaker/Assets/SGF/UI/Framework/UIPage.cs",
+		"/Users/huxf/Downloads/Snaker/Assets/SGF/Module/Framework/ServiceModule.cs",
+		"/Users/huxf/Documents/Code/Repository/ui/UnityEngine.UI/EventSystem/EventHandle.cs",
+		"/Users/huxf/Downloads/JJHall.50202.30000.visible/assets/module/game/res/pb/TKMobile.pb",
+		"/private/var/folders/fk/9sjjyl6d13qc8jr5rt0z967c0000gn/T/BetterZip Temporary Folder.G3BGdT/BetterZip Temporary Folder.Kk15tM/assets/module/hall/res/config/1_globalconfig.json",
+		"/Users/huxf/Documents/Workspace/projects/games/mahjong/Mahjong/Assets/Plugins/flatbuffers.bundle/Contents/Info.plist",
+		"/Users/huxf/Documents/Workspace/projects/games/mahjong/Mahjong/Assets/Plugins/uv.bundle/Contents/Info.plist",
+		"/Users/huxf/Documents/Workspace/projects/games/mahjong/Mahjong/Assets/Plugins/network.bundle/Contents/Info.plist",
+		"/Users/huxf/Documents/Code/Repository/flatbuffers/Makefile",
+		"/Users/huxf/Documents/Workspace/ClionProjects/children/network/build/Debug/OSX/network.bundle/Contents/Info.plist",
+		"/Users/huxf/Documents/Workspace/ClionProjects/children/network/network.i",
+		"/Users/huxf/Documents/Workspace/ClionProjects/children/network/netPINVOKE.cs",
+		"/Users/huxf/Documents/Workspace/ClionProjects/children/network/net_wrap.cxx",
+		"/Users/huxf/Documents/Code/Repository/flatbuffers/samples/monster_generated.h",
+		"/Users/huxf/Documents/Code/Repository/flatbuffers/monster_generated.h",
+		"/Users/huxf/Documents/Code/Repository/flatbuffers/monster.fbs",
+		"/Users/huxf/Documents/Code/Repository/uvw/test/uvw/work.cpp",
+		"/Users/huxf/Documents/Code/Repository/uvw/test/uvw/dns.cpp",
+		"/Users/huxf/Documents/Code/Repository/uvw/test/uvw/thread.cpp",
+		"/Users/huxf/Documents/Workspace/happypoker/LepaiQuickRuntime/depends/cross-platform/Implement/LobbyControl/Lepai/all/ILepaiTourney.cpp",
+		"/Users/huxf/Documents/Workspace/happypoker/LepaiQuickRuntime/depends/cross-platform/Implement/LobbyControl/Lepai/all/ILepaiLobbyControl.cpp",
+		"/Users/huxf/Documents/Workspace/ClionProjects/children/MahjongServer/Dependencies/include/uvw/work.hpp",
+		"/Users/huxf/Documents/Workspace/Xcode/test/Classes/net/socket/Socket.cpp",
+		"/Users/huxf/.ssh/id_rsa.pub",
+		"/Users/huxf/.ssh/id_rsa.pub的副本",
+		"/Users/huxf/.ssh/my-ssh-key.pub",
+		"/Users/huxf/Downloads/tuntap_20150118/README.installer",
+		"/Users/huxf/Desktop/unity3d/_Complete-Game/Scripts/GameManager.cs",
+		"/Users/huxf/Desktop/unity3d/_Complete-Game/Scripts/Player.cs",
+		"/Users/huxf/Desktop/unity3d/_Complete-Game/Scripts/BoardManager.cs",
+		"/Volumes/C/Users/huxf/Desktop/a.html",
+		"/Users/huxf/Documents/Workspace/Sublime/MaoShan/MaoShan.sublime-workspace"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 101.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"folders":
+	[
+		{
+			"path": "/Users/huxf/Documents/Workspace/ClionProjects/children/web"
+		}
+	],
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "Bridge/app/views/layouts/application.html.erb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 474,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								211,
+								211
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/HTML (Rails).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 35.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 311.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

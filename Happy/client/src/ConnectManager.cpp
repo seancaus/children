@@ -4,6 +4,8 @@
 
 #include <thread>
 #include <handler/HallHandler.h>
+#include <iostream>
+#include "TCPConnector.h"
 #include "ConnectManager.h"
 #include "MessageManager.h"
 #include "handler/ModuleDef.h"
@@ -16,6 +18,40 @@ ConnectManager::ConnectManager():
         _msgManager(make_shared<MessageManager>())
 {
 //    _connector->set_handler(std::bind(&ConnectManager::onRecv, this, placeholders::_1, placeholders::_2));
+}
+
+int ConnectManager::createConnect(string ip, unsigned int port)
+{
+    int connectId = 0;
+    auto connect = make_shared<TCPConnector>(ip, port);
+    _mapConnector.insert(make_pair(connectId, connect));
+    return connectId;
+}
+
+void ConnectManager::closeConnect(int connectId)
+{
+    auto iter = _mapConnector.find(connectId);
+    if( iter == _mapConnector.end() )
+    {
+        cout << "don't have connect for connectId:" << connectId << endl;
+        return;
+    }
+
+    auto connect = _mapConnector.erase(iter)->second;
+    connect->close();
+}
+
+void ConnectManager::send(int connectId, std::string &msg)
+{
+    auto iter = _mapConnector.find(connectId);
+    if( iter == _mapConnector.end() )
+    {
+        cout << "don't have connect for connectId:" << connectId << endl;
+        return;
+    }
+
+    auto connect = _mapConnector.erase(iter)->second;
+    connect->send(msg);
 }
 
 void ConnectManager::registerDefHandler()
