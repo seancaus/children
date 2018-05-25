@@ -18,12 +18,16 @@ file(GLOB_RECURSE SOURCE_FILES include/*.h src/*.cpp)
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})
 
 IF (WIN32)
-    target_link_libraries( ${PROJECT_NAME} uv flatbuffers uuid ws2_32.lib Iphlpapi.lib Psapi.lib Userenv.lib)
+    target_link_libraries( ${PROJECT_NAME}
+                            uv ws2_32.lib Iphlpapi.lib Psapi.lib Userenv.lib
+                            flatbuffers uuid
+                            gflags_static glog
+                        )
 ELSEIF (APPLE)
-    target_link_libraries( ${PROJECT_NAME} uv flatbuffers uuid)
+    target_link_libraries( ${PROJECT_NAME} uv flatbuffers uuid gflags_static glog)
 ELSEIF (UNIX)
     MESSAGE(STATUS "Now is UNIX-like OS's. Including aPPLE os x  and CygWin")
 
-    target_link_libraries( ${PROJECT_NAME} uv flatbuffers uuid)
+    target_link_libraries( ${PROJECT_NAME} uv flatbuffers uuid gflags_static glog)
 ENDIF ()
 

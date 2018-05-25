@@ -42,3 +42,5 @@ Dependencies/
 # !否定忽略
 # []用来匹配括号内的任一字符 例：*.[oa]忽略所有以".o"或".a"结尾
 libsrc
+Happy/server/gate/cmake-build-debug/
+Happy/client/cmake-build-debug/

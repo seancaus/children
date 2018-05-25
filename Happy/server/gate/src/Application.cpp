@@ -2,7 +2,7 @@
 // Created by Ziv on 2018/4/22.
 //
 
-#include "Root.h"
+#include "Application.h"
 #include "Server.h"
 #include "PlayerManager.h"
 #include "MessageManager.h"
@@ -10,20 +10,20 @@
 
 using namespace std;
 
-template <> Root* Singleton<Root>::instance = nullptr;
+template <> Application* Singleton<Application>::instance = nullptr;
 
-Root::Root()
+Application::Application()
         : _msgManager(make_shared<MessageManager>())
         ,_server(make_shared<Server>())
 {
-    _server->set_handler(std::bind(&Root::onRecv, this, placeholders::_1, placeholders::_2, placeholders::_3));
+    _server->set_handler(std::bind(&Application::onRecv, this, placeholders::_1, placeholders::_2, placeholders::_3));
 }
 
-Root::~Root()
+Application::~Application()
 {
 }
 
-void Root::start()
+void Application::start()
 {
     _msgManager->registerHandler(Handler_Hall, make_shared<HallHandler>());
     _msgManager->registerHandler(Handler_Room, make_shared<RoomHandler>());
@@ -31,17 +31,17 @@ void Root::start()
     _server->start();
 }
 
-void Root::onRecv(unsigned int msgId, std::string& uuid, std::string &msg)
+void Application::onRecv(unsigned int msgId, std::string& uuid, std::string &msg)
 {
     _msgManager->dispatchMessage(msgId, uuid, msg);
 }
 
-void Root::send(std::string& uid, int msgId, std::string &msg)
+void Application::send(std::string& uid, int msgId, std::string &msg)
 {
     _server->send(uid,msgId,msg);
 }
 
-void Root::authPlayer(std::string &uid, std::string &uuid)
+void Application::authPlayer(std::string &uid, std::string &uuid)
 {
     _server->authClient(uuid, uid);
 }

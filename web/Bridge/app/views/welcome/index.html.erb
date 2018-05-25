@@ -1,17 +1,21 @@
 <% content_for :head do %>
-  <title>A simple page</title>
+  <title>打包</title>
+<% end %>
+
+<% content_for :script do %>
+<script type="text/javascript">
+	$('.ui.accordion').accordion();
+</script>
 <% end %>
 
 <div class="ui fixed inverted menu">
-	<a href="#" class="header item"><img class="logo" src="images/logo.png">平行志愿者</a>
-	<a href="#" class="active item"><i class="gamepad icon"></i>管理控制台</a>
-	<div class="ui simple dropdown item">Dropdown <i class="dropdown icon"></i>
+	<a href="#" class="header item"><img class="logo" src="images/logo.png"> 打包工具</a>
+	<div class="ui simple dropdown item">目录 <i class="dropdown icon"></i>
 		<div class="menu">
-			<a class="item" href="#">Link Item</a>
+			<a class="item" href="#">test</a>
 			<div class="item">
-				<i class="dropdown icon"></i>Sub Menu
+				<i class="dropdown icon"></i> Sub Menu 
 				<div class="menu">
-					<a class="item" href="#">Link Item</a>
 					<a class="item" href="#">Link Item</a>
 				</div>
 			</div>
@@ -19,10 +23,17 @@
 	</div>
 
 	<div class="right menu">
-		<div class="item"><img class="ui avatar image" src="/images/wireframe/square-image.png"></div>
+		<div class="item"><img class="ui avatar image" src="images/wireframe/square-image.png"></div>
 	</div>
 </div>
 
-<% content_for :script do %>
+<div class="ui padded grid">
+  <div class="blue row">
+    <div class="column">Red</div>
+  </div>
+  <div class="red row">
+    <div class="column">Orange</div>
+    <div class="column">Orange</div>
+  </div>
+</div>
 
-<% end %>

@@ -2,7 +2,7 @@
 // Created by Ziv on 2018/4/26.
 //
 
-#include <Root.h>
+#include <Application.h>
 #include <handle/Handler.h>
 #include "module/hall/HallServer.h"
 #include "module/hall/hall_generated.h"
@@ -63,10 +63,10 @@ void HallServer::onLogin(std::string& uuid,const share::hall::Message *message) 
     auto reply = CreateMessage(builder,Any_LoginReply,CreateLoginReply(builder, player.Finish()).Union());
     builder.Finish(reply);
 
-    Root::getInstance().authPlayer(userid, uuid);
+    Application::getInstance().authPlayer(userid, uuid);
     string replyMsg(reinterpret_cast<const char*>(builder.GetBufferPointer()),builder.GetSize());
-    Root::getInstance().send(userid,Handler_Hall,replyMsg);
-    Root::getInstance().send(userid,Handler_Room,replyMsg);
+    Application::getInstance().send(userid,Handler_Hall,replyMsg);
+    Application::getInstance().send(userid,Handler_Room,replyMsg);
 }
 
 

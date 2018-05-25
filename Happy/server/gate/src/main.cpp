@@ -3,14 +3,18 @@
 //
 #include <memory>
 #include <iostream>
-#include "Root.h"
-#include "uuid.h"
+#include "Application.h"
+#include "utils/uuid.h"
+#include "glog/logging.h"
 
 using namespace std;
 
 int main() {
 
-    auto root = make_shared<Root>();
+//    google::InitGoogleLogging("-log_dir=./log");
+//    LOG(INFO) << "123456987" << endl;
+
+    auto root = make_shared<Application>();
     root->start();
 
     return 0;

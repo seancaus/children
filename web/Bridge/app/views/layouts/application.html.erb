@@ -1,17 +1,16 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <link rel="stylesheet" type="text/css" href="semantic/semantic.min.css">
-    <%= yield :head %>
-  </head>
-
-  <body>
-    <%= yield %>
-    <script src="library/jquery.min.js"></script>
-    <script src="semantic/semantic.min.js"></script>
-    <%= yield :script %>
-  </body>
+<html lang="zh">
+    <head>
+        <meta charset="utf-8" />
+        <%= csrf_meta_tags %>
+        <%= csp_meta_tag %>
+        <link rel="stylesheet" type="text/css" href="semantic/semantic.min.css">
+        <%= yield :head %>
+    </head>
+    <body>
+      <%= yield %>
+      <script src="library/jquery.min.js"></script>
+      <script src="semantic/semantic.min.js"></script>
+      <%= yield :script %>
+    </body>
 </html>

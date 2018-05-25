@@ -5,6 +5,7 @@
 #include <iostream>
 #include <fstream>
 #include <uvw.hpp>
+#include <cassert>
 
 #include "Server.h"
 #include "Packet.h"

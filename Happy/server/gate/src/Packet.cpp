@@ -2,11 +2,13 @@
 // Created by Ziv on 2018/3/28.
 //
 #include <cassert>
+#include <cstring>
 #include "Packet.h"
 
 using namespace std;
 
-struct Pack{
+struct Pack
+{
     unsigned int msgId;
     unsigned int length;
 };

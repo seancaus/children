@@ -2,8 +2,8 @@
 // Created by Ziv on 2018/4/22.
 //
 
-#ifndef GATESERVER_ROOT_H
-#define GATESERVER_ROOT_H
+#ifndef GATESERVER_APPLICATION_H
+#define GATESERVER_APPLICATION_H
 
 #include <memory>
 #include <string>
@@ -12,11 +12,11 @@
 class Server;
 class MessageManager;
 
-class Root : public Singleton<Root> {
+class Application : public Singleton<Application> {
 
 public:
-    Root();
-    virtual ~Root();
+    Application();
+    virtual ~Application();
 
     void start();
     void onRecv(unsigned int msgId, std::string &uuid, std::string &msg);
