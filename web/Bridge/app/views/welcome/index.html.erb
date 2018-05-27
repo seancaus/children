@@ -22,18 +22,38 @@
 
 <% content_for :script do %>
 <script type="text/javascript">
-	// $('.ui.accordion').accordion();
+	$('.ui.accordion').accordion();
 </script>
 <% end %>
 
-<div class="ui fixed inverted menu">
-	<a href="#" class="header item"><img class="logo" src="images/logo.png"> 打包工具</a>
-	<div class="right menu">
-		<div class="item"><img class="ui avatar image" src="images/wireframe/square-image.png"></div>
+<div class="ui red segments">
+	<div class="ui top inverted attached menu">
+		<a class="header item"><img class="logo" src="images/logo.png"> 打包工具</a>
+		<div class="right menu">
+			<div class="item"><img class="ui avatar image" src="images/wireframe/square-image.png"></div>
+		</div>
+	</div>
+
+	<div class="ui bottom attached segment pushable">
+	  	<div class="ui visible left inline vertical sidebar menu">
+	    	<div class="ui vertical accordion">
+				<div class="active title">
+					<i class="dropdown icon"></i>
+					成员
+				</div>
+				<div class="active content">
+					
+				</div>
+			</div>
+	  	</div>
+
+	  	<div class="pusher">
+			<div class="ui basic segment">
+				<h3 class="ui header">Application Content</h3>
+				<h3 class="ui header">Application Content</h3>
+				<h3 class="ui header">Application Content</h3>
+				<h3 class="ui header">Application Content</h3>
+	    	</div>
+	  	</div>
 	</div>
 </div>
-
-<div class="ui main text container">
-    123456
-</div>
-

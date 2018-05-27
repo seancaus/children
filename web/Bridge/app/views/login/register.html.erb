@@ -1,0 +1,97 @@
+<% content_for :head do %>
+<style type="text/css">
+    body {
+        background-color: #DADADA;
+    }
+    body > .grid {
+        height: 100%;
+    }
+    .image {
+        margin-top: -100px;
+    }
+    .column {
+    max-width: 450px;
+    }
+</style>
+<% end %>
+
+<% content_for :script do %>
+  <script>
+  $(document)
+    .ready(function() {
+      $('.ui.form')
+        .form({
+          fields: {
+            email: {
+              identifier  : 'name',
+              rules: [
+                {
+                  type   : 'empty',
+                  prompt : '请输入您的姓名！'
+                }
+              ]
+            },
+            password: {
+              identifier  : 'phone',
+              rules: [
+                {
+                  type   : 'number',
+                  prompt : '请输入您的电话号码！'
+                },
+                {
+                  type   : 'exactLength[11]',
+                  prompt : '您输入的手机号码格式不正确！'
+                }
+              ]
+            }
+          }
+        })
+      ;
+    })
+  ;
+  </script>
+<% end %>
+
+<div class="ui middle aligned center aligned grid">
+    <div class="column">
+        <h2 class="ui teal image header">
+            <img src="/images/logo.png" class="image">
+            <div class="content"> 申请志愿者 </div>
+        </h2>
+        <%= form_tag("/",class:"ui large form") do%>
+            <h4 class="ui header">
+  <i class="trophy icon"></i>
+  <div class="content">
+    Trending repos
+    <div class="ui inline dropdown">
+      <div class="text">today</div>
+      <i class="dropdown icon"></i>
+      <div class="menu">
+        <div class="header">Adjust time span</div>
+        <div class="active item" data-text="today">Today</div>
+        <div class="item" data-text="this week">This Week</div>
+        <div class="item" data-text="this month">This Month</div>
+      </div>
+    </div>
+  </div>
+</h4>
+
+            <div class="ui stacked segment">
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="user icon"></i>
+                        <input type="text" name="name" placeholder="姓名">
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="phone icon"></i>
+                        <input type="text" name="phone" placeholder="电话">
+                    </div>
+                </div>
+                <div class="ui fluid large teal submit button">申请</div>
+            </div>
+            <div class="ui error message"></div>
+        <%end%>
+    </div>
+</div>
