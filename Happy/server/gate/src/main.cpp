@@ -11,11 +11,12 @@ using namespace std;
 
 int main() {
 
-//    google::InitGoogleLogging("-log_dir=./log");
-//    LOG(INFO) << "123456987" << endl;
+    google::InitGoogleLogging("test");
+    LOG(FATAL) << "Hello,GLOG!";
+    google::ShutdownGoogleLogging();
 
     auto root = make_shared<Application>();
-    root->start();
+//    root->start();
 
     return 0;
 }

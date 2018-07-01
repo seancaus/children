@@ -24,7 +24,7 @@ IF (WIN32)
                             gflags_static glog
                         )
 ELSEIF (APPLE)
-    target_link_libraries( ${PROJECT_NAME} uv flatbuffers uuid gflags_static glog)
+    target_link_libraries( ${PROJECT_NAME} uv flatbuffers uuid glog)
 ELSEIF (UNIX)
     MESSAGE(STATUS "Now is UNIX-like OS's. Including aPPLE os x  and CygWin")
 
