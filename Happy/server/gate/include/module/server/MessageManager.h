@@ -19,8 +19,8 @@ public:
     MessageManager();
     virtual ~MessageManager();
 
-    void registerHandler(unsigned int msgId, shared_ptr<ModuleListener>);
-    void dispatchMessage(unsigned int msgId, std::string &uid, string &msg);
+    void registerHandler(int packId, shared_ptr<ModuleListener>);
+    void dispatchMessage(int packId, std::string &uid, string &msg);
 
 protected:
 

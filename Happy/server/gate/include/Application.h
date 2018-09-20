@@ -27,7 +27,6 @@ public:
 protected:
 
     std::shared_ptr<Server> _server;
-    std::shared_ptr<MessageManager> _msgManager;
 };
 
 #endif //GATESERVER_GATEMANAGER_H

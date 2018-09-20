@@ -13,12 +13,9 @@ namespace uvw{
 
 class Message {
 
-
 public:
     Message(uvw::TcpHandle& handle,std::string msg);
     virtual ~Message();
-
-
 protected:
 
     std::string _msg;
